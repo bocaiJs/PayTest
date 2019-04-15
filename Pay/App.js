@@ -8,22 +8,19 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
+import  PayKuaiKou from './js/Pay'
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text 
+          style={styles.welcome} style={{paddingTop:20,paddingBottom:20,paddingLeft:20,paddingRight:20,backgroundColor:"yellow"}}
+          onPress={()=>{
+              console.log(PayKuaiKou);
+               PayKuaiKou.pay('2228b16de2828503e1e7863a92c780daf');
+          }}
+        >测试</Text>
       </View>
     );
   }
