@@ -3,8 +3,11 @@ package com.pay;
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.os.Handler;
 
 //支付的包
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.switfpass.pay.MainApplication;
 import com.switfpass.pay.activity.PayPlugin;
 import com.switfpass.pay.bean.RequestMsg;
@@ -13,6 +16,7 @@ import com.switfpass.pay.utils.MD5;
 import com.switfpass.pay.utils.SignUtils;
 import com.switfpass.pay.utils.Util;
 import com.switfpass.pay.utils.XmlUtils;
+import com.pay.wxapi.WXPayEntryActivity;
 
 public class MainActivity extends ReactActivity {
     public static MainActivity instance=null;
@@ -37,5 +41,13 @@ public class MainActivity extends ReactActivity {
         msg.setTradeType(MainApplication.ZFB_APP_TYPE);
         PayPlugin.unifiedAppPay(MainActivity.this, msg);
     }
+    public Handler handler = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+//            switch (msg.what)
+                PayModule.instance.sendResult(msg.what);
+        };
+    };
 
 }
