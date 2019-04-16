@@ -37,6 +37,6 @@ public class PayModule extends ReactContextBaseJavaModule {
     public void sendResult(int Code){
         this.getReactApplicationContext()
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit("WeChat_Resp", Code);
+                .emit("Pay_Resp", Code);
     }
 }
